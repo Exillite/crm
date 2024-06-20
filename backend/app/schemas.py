@@ -23,18 +23,6 @@ class User(BaseModel):
     is_admin: bool
 
 
-class RecordTypeCreate(BaseModel):
-    fields: List[dict] # [{title: str, type: str, for_form: bool}]
-
-
-class RecordTypeUpdate(BaseModel):
-    fields: List[dict] # [{title: str, type: str, for_form: bool}]
-
-
-class RecordType(BaseModel):
-    fields: List[dict] # [{title: str, type: str, for_form: bool}]
-
-
 class RecordCreate(BaseModel):
     data: dict
     folder: str # folder id
@@ -49,7 +37,28 @@ class RecordChangeFolder(BaseModel):
     folder: str # folder id
 
 
+class FolderCreate(BaseModel):
+    title: str
+    page: str
+
+
+class FolderUpdate(BaseModel):
+    title: str
+
+
+class Folder(BaseModel):
+    title: str
+
+
+class PageCreate(BaseModel):
+    record_fields: List[dict]
+
+
+class PageUpdate(BaseModel):
+    record_fields: List[dict]
+
+
 class Page(BaseModel):
-    records: List[str] # ids of records
+    record_fields: List[dict]
     creator: str # creator id
     folders: List[str] # ids of records folders

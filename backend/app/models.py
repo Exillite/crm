@@ -25,6 +25,7 @@ class Record(Document):
     data: dict
     folder: str # folder id
     created_at: datetime
+    update_at: datetime
     creator: str # creator id
 
     class Config:
@@ -39,6 +40,6 @@ class Folder(Document):
 
 
 class Page(Document):
-    records: List[str] # ids of records
+    record_fields: List[dict] # [{title: str, type: str, for_form: bool}]
     creator: str # creator id
     folders: List[str] # ids of records folders
