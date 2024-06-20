@@ -112,8 +112,9 @@ async def create_folder(folder_data: FolderCreate) -> Folder:
     await new_folder.create()
     
     page = await get_page_by_id(folder_data.page)
-    page.folders.append(new_folder.id)
-    await page.update()
+    if page:
+        page.folders.append(new_folder.id)
+        await page.update()
     
     return new_folder
 

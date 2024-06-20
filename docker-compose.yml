@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - custom
+    depends_on:
+      - mongo_db
+
+  mongo_db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - custom
+    volumes:
+      - db_data:/data/db
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - custom
+    depends_on:
+      - backend
+
+networks:
+  custom:
+    driver: bridge
+
+
+volumes:
+  db_data:
