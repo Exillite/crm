@@ -119,7 +119,7 @@ async def create_folder(folder_data: FolderCreate) -> Folder:
     return new_folder
 
 
-async def update_folder(folder_id, folder_data: FolderUpdate) -> Optional[Folder]:
+async def update_folder(folder_id: str, folder_data: FolderUpdate) -> Optional[Folder]:
     folder = await Folder.get(id=folder_id)
     if folder:
         folder.title = folder_data.title
