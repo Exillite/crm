@@ -9,6 +9,9 @@ from mangodm import connect_to_mongo, close_mongo_connection
 import time
 
 from .user import router as user_router
+from .record import router as record_router
+from .folder import router as folder_router
+from .page import router as page_router
 
 
 MONGODB_CONNECTION_URL = "mongodb://crm-mongo_db-1"
@@ -41,6 +44,9 @@ app.add_middleware(
 
 
 app.include_router(user_router)
+app.include_router(record_router)
+app.include_router(folder_router)
+app.include_router(page_router)
 
 
 if __name__ == "__main__":
