@@ -43,3 +43,10 @@ class Page(Document):
     record_fields: List[dict] # [{title: str, type: str, for_form: bool}]
     creator: str # creator id
     folders: List[str] # ids of records folders
+
+
+User.register_collection()
+RecordType.register_collection()
+Record.register_collection()
+Folder.register_collection()
+Page.register_collection()

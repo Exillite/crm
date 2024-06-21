@@ -37,6 +37,7 @@ __Админ панель__
 __User__
 - POST /api/user/register
 - POST /api/user/login
+- GET /api/user/me
 - GET /api/user/{user_id}
 
 __Page__

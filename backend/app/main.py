@@ -8,8 +8,10 @@ from mangodm import connect_to_mongo, close_mongo_connection
 
 import time
 
+from .user import router as user_router
 
-MONGODB_CONNECTION_URL = "mongodb://tg_cliker_coin_mongo_db_1"
+
+MONGODB_CONNECTION_URL = "mongodb://crm-mongo_db-1"
 DATABASE_NAME = "test_database"
 
 
@@ -36,6 +38,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+app.include_router(user_router)
 
 
 if __name__ == "__main__":

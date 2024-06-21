@@ -19,14 +19,12 @@ class User(BaseModel):
     login: str
     phone: Optional[str]
     email: Optional[str]
-    password: str
     is_admin: bool
 
 
 class RecordCreate(BaseModel):
     data: dict
     folder: str # folder id
-
 
 class RecordUpdate(BaseModel):
     data: dict

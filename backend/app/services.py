@@ -1,5 +1,5 @@
-from models import User, Record, Folder, Page
-from schemas import (
+from app.models import User, Record, Folder, Page
+from app.schemas import (
     UserRegister, UserLogin,
     RecordCreate, RecordUpdate, RecordChangeFolder,
     FolderCreate, FolderUpdate,
