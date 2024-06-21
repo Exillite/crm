@@ -43,7 +43,8 @@ def get_password_hash(password):
 async def get_user(username: str):
     user = await srv.get_user_by_login(username)
     if user:
-        return UserInDB(login=user.login,
+        return UserInDB(id=user.id,
+                        login=user.login,
                         phone=user.phone,
                         email=user.email,
                         is_admin=user.is_admin,

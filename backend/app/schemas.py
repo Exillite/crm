@@ -16,6 +16,7 @@ class UserLogin(BaseModel):
 
 
 class User(BaseModel):
+    id: str
     login: str
     phone: Optional[str]
     email: Optional[str]
