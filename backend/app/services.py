@@ -22,6 +22,13 @@ async def create_user(user_data: UserRegister) -> User:
     return new_user
 
 
+async def check_valid_new_user(user_data: UserRegister) -> bool:
+    existing_user = await get_user_by_login(user_data.login)
+    if existing_user:
+        return False
+    return True
+
+
 async def delete_user(user_id: str) -> bool:
     user = await User.get(id=user_id)
     if user:

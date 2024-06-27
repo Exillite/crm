@@ -32,6 +32,12 @@ http.createServer((request, response) => {
         case '/login':
             fsPath += '/pages/login.html';
             break;
+        case '/reg':
+            fsPath += '/pages/reg.html';
+            break;
+        case '/crm':
+            fsPath += '/pages/crm.html';
+            break;
         default:
             fsPath += requestUrl.pathname;
             break;

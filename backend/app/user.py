@@ -133,9 +133,12 @@ async def read_users_me(
 @router.post("/register")
 async def register_user(user_data: UserRegister):
     try:
-        user_data.password = get_password_hash(user_data.password)
-        new_user = await srv.create_user(user_data)
-        return new_user.to_response()
+        if await srv.check_valid_new_user(user_data):
+            user_data.password = get_password_hash(user_data.password)
+            new_user = await srv.create_user(user_data)
+            return new_user.to_response()
+        else:
+            raise HTTPException(status_code=409, detail="User already exists")
     except Exception as e:
         return "Error"
     
