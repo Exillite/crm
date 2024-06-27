@@ -1,11 +1,12 @@
-# Use an official Node.js runtime as the base image
-FROM node:16
+FROM node:latest
 
-COPY . .
+# COPY . .
+
 WORKDIR /app
 
-RUN npm install
+EXPOSE 3000
 
-EXPOSE 8080
+RUN npm init -y
+RUN npm install http fs path url
 
-CMD ["npm", "run", "serve"]
+CMD ["node", "server.js"]

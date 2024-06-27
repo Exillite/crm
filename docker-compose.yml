@@ -15,17 +15,14 @@ services:
       - mongo_db
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    build: ./frontend
     ports:
       - "3000:3000"
     networks:
       - custom
-    depends_on:
-      - backend
     volumes:
-      - ./frontend/app:/app
+      - ./frontend:/app
+
 
   mongo_db:
     image: mongo
